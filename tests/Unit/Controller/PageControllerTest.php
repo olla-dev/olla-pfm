@@ -1,31 +1,24 @@
 <?php
 
-namespace OCA\OllaBudgetManager\Tests\Unit\Controller;
+namespace OCA\OllaBudgetManager\Controller;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 use OCP\AppFramework\Http\TemplateResponse;
 
-use OCA\OllaBudgetManager\Controller\PageController;
-
-
-class PageControllerTest extends PHPUnit_Framework_TestCase {
+class PageControllerTest extends TestCase {
 	private $controller;
-	private $userId = 'john';
 
-	public function setUp() {
+	public function setUp(): void {
 		$request = $this->getMockBuilder('OCP\IRequest')->getMock();
-
-		$this->controller = new PageController(
-			'ollabudgetmanager', $request, $this->userId
-		);
+		$this->controller = new PageController($request);
 	}
+
 
 	public function testIndex() {
 		$result = $this->controller->index();
 
-		$this->assertEquals('index', $result->getTemplateName());
+		$this->assertEquals('main', $result->getTemplateName());
 		$this->assertTrue($result instanceof TemplateResponse);
 	}
-
 }
