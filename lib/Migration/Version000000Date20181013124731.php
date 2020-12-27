@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OCA\NotesTutorial\Migration;
+namespace OCA\OllaBudgetManager\Migration;
 
 use Closure;
 use OCP\DB\ISchemaWrapper;
@@ -41,7 +41,7 @@ class Version000000Date20181013124731 extends SimpleMigrationStep {
 			]);
 
 			$table->setPrimaryKey(['id']);
-			$table->addIndex(['user_id'], 'ollabudgetmanager_user_id_index');
+			$table->addIndex(['user_id'], 'ollabm_uid_index');
 		}
 		return $schema;
 	}

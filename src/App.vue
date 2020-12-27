@@ -2,30 +2,21 @@
 	<div id="content" class="app-ollabudgetmanager">
 		<AppNavigation>
 			<AppNavigationNew v-if="!loading"
-				:text="t('ollabudgetmanager', 'New note')"
+				:text="t('ollabudgetmanager', 'New bill')"
 				:disabled="false"
 				button-id="new-ollabudgetmanager-button"
 				button-class="icon-add"
 				@click="newNote" />
 			<ul>
-				<AppNavigationItem v-for="note in notes"
-					:key="note.id"
-					:title="note.title ? note.title : t('ollabudgetmanager', 'New note')"
-					:class="{active: currentNoteId === note.id}"
-					@click="openNote(note)">
-					<template slot="actions">
-						<ActionButton v-if="note.id === -1"
-							icon="icon-close"
-							@click="cancelNewNote(note)">
-							{{ t('ollabudgetmanager', 'Cancel note creation') }}
-						</ActionButton>
-						<ActionButton v-else
-							icon="icon-delete"
-							@click="deleteNote(note)">
-							{{ t('ollabudgetmanager', 'Delete note') }}
-						</ActionButton>
-					</template>
-				</AppNavigationItem>
+				<AppNavigationItem
+					icon="icon-close"
+					:title="t('ollabudgetmanager', 'Subscriptions')" />
+				<AppNavigationItem
+					icon="icon-close"
+					:title="t('ollabudgetmanager', 'Loans')" />
+				<AppNavigationItem
+					icon="icon-close"
+					:title="t('ollabudgetmanager', 'Settings')" />
 			</ul>
 		</AppNavigation>
 		<AppContent>
@@ -50,7 +41,6 @@
 </template>
 
 <script>
-import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
 import AppContent from '@nextcloud/vue/dist/Components/AppContent'
 import AppNavigation from '@nextcloud/vue/dist/Components/AppNavigation'
 import AppNavigationItem from '@nextcloud/vue/dist/Components/AppNavigationItem'
@@ -64,7 +54,6 @@ import axios from '@nextcloud/axios'
 export default {
 	name: 'App',
 	components: {
-		ActionButton,
 		AppContent,
 		AppNavigation,
 		AppNavigationItem,

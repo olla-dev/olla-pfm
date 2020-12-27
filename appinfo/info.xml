@@ -16,8 +16,8 @@
     </dependencies>
     <navigations>
         <navigation>
-            <name>Notes Tutorial</name>
-            <route>notestutorial.page.index</route>
+            <name>OllaBudgetManager</name>
+            <route>ollabudgetmanager.page.index</route>
         </navigation>
     </navigations>
 </info>
