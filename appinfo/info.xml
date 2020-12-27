@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+    <id>ollabudgetmanager</id>
+    <name>Olla Budget Manager</name>
+    <summary>Personal Finance Manager</summary>
+    <description><![CDATA[Olla Budget Manager helps your track your recurrent bills and expenses]]></description>
+    <version>0.0.1</version>
+    <licence>agpl</licence>
+    <author mail="contact@codeplumbers.eu" homepage="https://codeplumbers.eu">hamza abdelkebir</author>
+    <namespace>OllaBudgetManager</namespace>
+    <category>tools</category>
+    <bugs>https://codeplumbers.eu/olla-budget-manager</bugs>
+    <dependencies>
+        <nextcloud min-version="15" max-version="15"/>
+    </dependencies>
+    <navigations>
+        <navigation>
+            <name>Olla Budget Manager</name>
+            <route>ollabudgetmanager.page.index</route>
+        </navigation>
+    </navigations>
+</info>
