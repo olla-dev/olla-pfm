@@ -2,5 +2,5 @@
 
 namespace OCA\OllaBudgetManager\Service;
 
-class NoteNotFound extends \Exception {
+class LoyaltyCardNotFound extends \Exception {
 }

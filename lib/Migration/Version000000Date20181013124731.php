@@ -39,6 +39,14 @@ class Version000000Date20181013124731 extends SimpleMigrationStep {
 				'notnull' => true,
 				'default' => ''
 			]);
+			$table->addColumn('format', 'text', [
+				'notnull' => false,
+				'default' => ''
+			]);
+			$table->addColumn('notes', 'text', [
+				'notnull' => false,
+				'default' => ''
+			]);
 
 			$table->setPrimaryKey(['id']);
 			$table->addIndex(['user_id'], 'ollabm_uid_index');

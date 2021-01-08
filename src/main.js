@@ -1,7 +1,7 @@
 /**
- * @copyright Copyright (c) 2018 John Molakvoæ <skjnldsv@protonmail.com>
+ * @copyright Copyright (c) 2018 Hamza Abdelkebbir <contact@codeplumbers.eu>
  *
- * @author John Molakvoæ <skjnldsv@protonmail.com>
+ * @author Hamza Abdelkebbir <contact@codeplumbers.eu>
  *
  * @license GNU AGPL version 3 or any later version
  *
@@ -21,10 +21,16 @@
  */
 import Vue from 'vue'
 import App from './App'
+import router from './router'
+import store from './store'
+
+Vue.config.productionTip = false
 
 Vue.mixin({ methods: { t, n } })
 
 export default new Vue({
+	router,
+	store,
 	el: '#content',
 	render: h => h(App),
 })

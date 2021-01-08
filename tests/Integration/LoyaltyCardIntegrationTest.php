@@ -7,11 +7,11 @@ use OCP\IRequest;
 use PHPUnit\Framework\TestCase;
 
 
-use OCA\OllaBudgetManager\Db\Note;
-use OCA\OllaBudgetManager\Db\NoteMapper;
-use OCA\OllaBudgetManager\Controller\NoteController;
+use OCA\OllaBudgetManager\Db\LoyaltyCard;
+use OCA\OllaBudgetManager\Db\LoyaltyCardMapper;
+use OCA\OllaBudgetManager\Controller\LoyaltyCardController;
 
-class NoteIntegrationTest extends TestCase {
+class LoyaltyCardIntegrationTest extends TestCase {
 	private $controller;
 	private $mapper;
 	private $userId = 'john';
@@ -30,30 +30,30 @@ class NoteIntegrationTest extends TestCase {
 			return $this->createMock(IRequest::class);
 		});
 
-		$this->controller = $container->query(NoteController::class);
-		$this->mapper = $container->query(NoteMapper::class);
+		$this->controller = $container->query(LoyaltyCardController::class);
+		$this->mapper = $container->query(LoyaltyCardMapper::class);
 	}
 
 	public function testUpdate() {
-		// create a new note that should be updated
-		$note = new Note();
-		$note->setTitle('old_title');
-		$note->setContent('old_content');
-		$note->setUserId($this->userId);
+		// create a new LoyaltyCard that should be updated
+		$LoyaltyCard = new LoyaltyCard();
+		$LoyaltyCard->setTitle('old_title');
+		$LoyaltyCard->setContent('old_content');
+		$LoyaltyCard->setUserId($this->userId);
 
-		$id = $this->mapper->insert($note)->getId();
+		$id = $this->mapper->insert($LoyaltyCard)->getId();
 
 		// fromRow does not set the fields as updated
-		$updatedNote = Note::fromRow([
+		$updatedLoyaltyCard = LoyaltyCard::fromRow([
 			'id' => $id,
 			'user_id' => $this->userId
 		]);
-		$updatedNote->setContent('content');
-		$updatedNote->setTitle('title');
+		$updatedLoyaltyCard->setContent('content');
+		$updatedLoyaltyCard->setTitle('title');
 
 		$result = $this->controller->update($id, 'title', 'content');
 
-		$this->assertEquals($updatedNote, $result->getData());
+		$this->assertEquals($updatedLoyaltyCard, $result->getData());
 
 		// clean up
 		$this->mapper->delete($result->getData());

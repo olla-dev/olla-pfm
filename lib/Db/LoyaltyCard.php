@@ -6,16 +6,20 @@ use JsonSerializable;
 
 use OCP\AppFramework\Db\Entity;
 
-class Note extends Entity implements JsonSerializable {
+class LoyaltyCard extends Entity implements JsonSerializable {
 	protected $title;
 	protected $content;
+	protected $format;
+	protected $notes;
 	protected $userId;
 
 	public function jsonSerialize(): array {
 		return [
 			'id' => $this->id,
 			'title' => $this->title,
-			'content' => $this->content
+			'content' => $this->content,
+			'format' => $this->format,
+			'notes' => $this->notes
 		];
 	}
 }

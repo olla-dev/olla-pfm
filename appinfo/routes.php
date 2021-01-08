@@ -2,8 +2,8 @@
 
 return [
 	'resources' => [
-		'note' => ['url' => '/notes'],
-		'note_api' => ['url' => '/api/0.1/notes']
+		'loyaltycard' => ['url' => '/loyaltycards'],
+		'loyaltycard_api' => ['url' => '/api/0.1/loyaltycards']
 	],
 	'routes' => [
 		['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],

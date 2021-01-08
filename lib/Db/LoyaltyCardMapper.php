@@ -8,7 +8,7 @@ use OCP\AppFramework\Db\QBMapper;
 use OCP\DB\QueryBuilder\IQueryBuilder;
 use OCP\IDBConnection;
 
-class NoteMapper extends QBMapper {
+class LoyaltyCardMapper extends QBMapper {
 	public function __construct(IDBConnection $db) {
 		parent::__construct($db, 'ollabudgetmanager', Note::class);
 	}

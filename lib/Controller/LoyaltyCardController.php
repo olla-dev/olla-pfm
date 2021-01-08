@@ -3,13 +3,13 @@
 namespace OCA\OllaBudgetManager\Controller;
 
 use OCA\OllaBudgetManager\AppInfo\Application;
-use OCA\OllaBudgetManager\Service\NoteService;
-use OCP\AppFramework\ApiController;
+use OCA\NotesTutorial\Service\LoyaltyCardService;
+use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\IRequest;
 
-class NoteApiController extends ApiController {
-	/** @var NoteService */
+class LoyaltyCardController extends Controller {
+	/** @var LoyaltyCardService */
 	private $service;
 
 	/** @var string */
@@ -18,7 +18,7 @@ class NoteApiController extends ApiController {
 	use Errors;
 
 	public function __construct(IRequest $request,
-								NoteService $service,
+								LoyaltyCardService $service,
 								$userId) {
 		parent::__construct(Application::APP_ID, $request);
 		$this->service = $service;
@@ -26,8 +26,6 @@ class NoteApiController extends ApiController {
 	}
 
 	/**
-	 * @CORS
-	 * @NoCSRFRequired
 	 * @NoAdminRequired
 	 */
 	public function index(): DataResponse {
@@ -35,8 +33,6 @@ class NoteApiController extends ApiController {
 	}
 
 	/**
-	 * @CORS
-	 * @NoCSRFRequired
 	 * @NoAdminRequired
 	 */
 	public function show(int $id): DataResponse {
@@ -46,8 +42,6 @@ class NoteApiController extends ApiController {
 	}
 
 	/**
-	 * @CORS
-	 * @NoCSRFRequired
 	 * @NoAdminRequired
 	 */
 	public function create(string $title, string $content): DataResponse {
@@ -56,8 +50,6 @@ class NoteApiController extends ApiController {
 	}
 
 	/**
-	 * @CORS
-	 * @NoCSRFRequired
 	 * @NoAdminRequired
 	 */
 	public function update(int $id, string $title,
@@ -68,8 +60,6 @@ class NoteApiController extends ApiController {
 	}
 
 	/**
-	 * @CORS
-	 * @NoCSRFRequired
 	 * @NoAdminRequired
 	 */
 	public function destroy(int $id): DataResponse {
