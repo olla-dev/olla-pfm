@@ -10,15 +10,14 @@
 					icon="icon-close"
 					to="loyaltycards"
 					:title="t('ollabudgetmanager', 'Loyalty Cards')" />
-				<AppNavigationItem
-					icon="icon-close"
-					to="about"
-					:title="t('ollabudgetmanager', 'About')" />
 			</ul>
 			<!-- settings -->
 			<template #footer>
 				<AppNavigationSettings v-if="!loading">
-					TODO SETTINGS
+					<AppNavigationItem
+						icon="icon-info"
+						to="about"
+						:title="t('ollabudgetmanager', 'About')" />
 				</AppNavigationSettings>
 			</template>
 		</AppNavigation>
