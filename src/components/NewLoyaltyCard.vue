@@ -15,6 +15,14 @@
                 type="text"
                 required>
             <br>
+            <Multiselect
+                v-model="format" 
+                :options="cardFormats" 
+                :multiple="false"
+                track-by="id" 
+                :placeholder="t('ollabudgetmanager', 'Card format')"
+                label="label" />
+            <br>
             <input
                 ref="valueField"
                 v-model="value"
@@ -47,6 +55,17 @@
 <script>
 import Modal from '@nextcloud/vue/dist/Components/Modal'
 import { ActionButton, Actions, AppNavigationItem } from '@nextcloud/vue'
+import Multiselect from '@nextcloud/vue/dist/Components/Multiselect'
+
+const cardFormats = [
+    { id: 1, label: 'EAN-13' },
+    { id: 2, label: 'EAN-8' },
+    { id: 3, label: 'QR Code' },
+    { id: 4, label: 'UPC-A' },
+    { id: 5, label: 'TYPE 128' },
+    { id: 6, label: 'TYPE 39' },
+    { id: 7, label: 'Other' }
+]
 
 export default {
 	name: 'NewLoyaltyCard',
@@ -55,6 +74,7 @@ export default {
 		ActionButton,
 		Actions,
         Modal,
+        Multiselect
 	},
 	directives: {},
 	props: {
@@ -65,7 +85,9 @@ export default {
             name: "",
             notes: "",
             store: "",
-            value: ""
+            value: "",
+            format: cardFormats[0], 
+            cardFormats
 		}
 	},
 	computed: {
@@ -78,7 +100,8 @@ export default {
 				name: this.name,
 				store: this.store,
 				notes: this.notes,
-				value: this.value
+				value: this.value,
+				cardFormat: this.format["label"]
 			}
             this.$emit('newLoyaltyCard', loyaltyCard)
 		},
@@ -90,6 +113,7 @@ export default {
 			this.notes = ""
 			this.store = ""
 			this.value = ""
+			this.format = ""
         },
         closeModal() {
 			this.clear()
@@ -104,7 +128,6 @@ export default {
 <style lang="scss" scoped>
 .modal__content {
     width: 50vw;
-    margin: 5vw 0;
     padding: 10px;
 }
 </style>

@@ -10,6 +10,5 @@ export default new Store({
 	modules: {
 		loyaltycards,
 	},
-
 	mutations,
 })

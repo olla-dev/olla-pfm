@@ -11,30 +11,19 @@
 					{{ t('ollabudgetmanager', 'Add a loyalty card') }}
 				</button>
 			</div>
-			<!--<router-link v-for="page in pages"
-				:key="page.title"
-				:to="`/${collectiveParam}/${encodeURIComponent(page.title)}`"
-				:class="{active: isActive(page)}"
+			<router-link v-for="card in cards"
+				:key="card.id"
+				:to="`/loyaltycards/${card.id}`"
+				:class="{active: isActive(card)}"
 				class="app-content-list-item">
 				<div class="app-content-list-item-icon"
-					:style="iconStyle(`Page-${page.id}`)">
-					{{ firstGrapheme(page.title) }}
+					:style="iconStyle(`Card-${card.id}`)">
+					{{ firstGrapheme(card.name) }}
 				</div>
 				<div class="app-content-list-item-line-one">
-					{{ page.title }}
+					{{ card.name }}
 				</div>
-				<div class="app-content-list-item-line-two">
-					{{ lastUpdate(page) }}
-				</div>
-				<span class="app-content-list-item-details"
-					:class="{active: recentlyEdited(page)}">
-					<Avatar v-if="page.lastUserId"
-						:user="page.lastUserId"
-						:disable-menu="true"
-						:tooltip-message="lastEditedUserMessage(page)"
-						:size="20" />
-				</span>
-			</router-link>-->
+			</router-link>
 			<NewLoyaltyCard 
 				:modal="modal"
 				@newLoyaltyCard="newLoyaltyCard"
@@ -73,14 +62,20 @@ export default {
 		}
 	},
 	computed: {
-		loyaltycards() {
-			return this.$store.getters.loyaltycards
+		cards: {
+			get () {
+				return this.$store.state.loyaltycards.data
+			}
 		},
-		selectedLoyaltyCard() {
-			return this.$store.getters.selectedLoyaltyCard
-		},
+		loadingCards: {
+			get () {
+				return this.$store.state.cards.loading
+			}
+		}
 	},
-
+	mounted(){
+    	this.$store.dispatch('loyaltycards/fetchLoyaltyCards')
+  	},
 	methods: {
 		showCreateCardModal() {
 			this.modal = true
@@ -88,14 +83,10 @@ export default {
 		/**
 		 * Create a new page and focus the page  automatically
 		 */
-		async newLoyaltyCard() {
+		async newLoyaltyCard(payload) {
 			try {
-				debugger
-				await this.$store.dispatch('loyaltycards/loyaltycards/createCard', {
-					store: "a",
-					notes: "a",
-					text: "a",
-					format: "aaa"
+				await this.$store.dispatch('loyaltycards/create', {
+					...payload
 				})
 				this.closeModal()
 			} catch (e) {
@@ -105,7 +96,18 @@ export default {
 		},
         closeModal() {
 			this.modal = false
-		}
+		},
+		isActive(card) {
+			return this.selectedLoyaltyCard && this.selectedLoyaltyCard.id === card.id
+		},
+		iconStyle(id) {
+			const c = id.toRgb()
+			return `background-color: rgb(${c.r}, ${c.g}, ${c.b})`
+		},
+		// UTF8 friendly way of getting first 'letter'
+		firstGrapheme(str) {
+			return str[Symbol.iterator]().next().value
+		},
 	},
 }
 </script>

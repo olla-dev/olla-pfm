@@ -17,16 +17,12 @@ export async function fetchLoyaltyCards({ commit }) {
 }
 
 export async function create ({ commit }, payload) {
-	debugger
 	commit('createCardRequest')
 	try {
 	  const response = await LoyaltyCardService.create(payload)
 	  commit('createCardSuccess', response)
 	  const responseAll = await LoyaltyCardService.getCards()
-	  commit('fetchCardsSuccess', responseAll)
-	  if (this.$router.currentRoute.path !== '/') {
-		this.$router.push('/')
-	  }
+	  commit('fetchLoyaltyCardsSuccess', responseAll)
 	  return response
 	} catch (e) {
 	  if (e instanceof GenericError) {

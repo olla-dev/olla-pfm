@@ -21,13 +21,13 @@ class Version000000Date20181013124731 extends SimpleMigrationStep {
 		/** @var ISchemaWrapper $schema */
 		$schema = $schemaClosure();
 
-		if (!$schema->hasTable('ollabudgetmanager')) {
-			$table = $schema->createTable('ollabudgetmanager');
+		if (!$schema->hasTable('olla_loyalty_cards')) {
+			$table = $schema->createTable('olla_loyalty_cards');
 			$table->addColumn('id', 'integer', [
 				'autoincrement' => true,
 				'notnull' => true,
 			]);
-			$table->addColumn('title', 'string', [
+			$table->addColumn('name', 'string', [
 				'notnull' => true,
 				'length' => 200
 			]);
@@ -35,21 +35,25 @@ class Version000000Date20181013124731 extends SimpleMigrationStep {
 				'notnull' => true,
 				'length' => 200,
 			]);
-			$table->addColumn('content', 'text', [
+			$table->addColumn('notes', 'text', [
 				'notnull' => true,
+				'default' => ''
+			]);
+			$table->addColumn('store', 'text', [
+				'notnull' => false,
+				'default' => ''
+			]);
+			$table->addColumn('value', 'text', [
+				'notnull' => false,
 				'default' => ''
 			]);
 			$table->addColumn('format', 'text', [
 				'notnull' => false,
 				'default' => ''
 			]);
-			$table->addColumn('notes', 'text', [
-				'notnull' => false,
-				'default' => ''
-			]);
 
 			$table->setPrimaryKey(['id']);
-			$table->addIndex(['user_id'], 'ollabm_uid_index');
+			$table->addIndex(['user_id'], 'olla_uid_index');
 		}
 		return $schema;
 	}

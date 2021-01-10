@@ -7,13 +7,13 @@ use Closure;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
 
-use OCA\OllaBudgetManager\Service\LoyaltyCardNotFound;
+use OCA\OllaBudgetManager\Service\LoyaltycardNotFound;
 
 trait Errors {
 	protected function handleNotFound(Closure $callback): DataResponse {
 		try {
 			return new DataResponse($callback());
-		} catch (LoyaltyCardNotFound $e) {
+		} catch (LoyaltycardNotFound $e) {
 			$message = ['message' => $e->getMessage()];
 			return new DataResponse($message, Http::STATUS_NOT_FOUND);
 		}

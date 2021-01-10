@@ -5,7 +5,7 @@ export function fetchLoyaltyCardsRequest(state) {
 }
 
 export function fetchLoyaltyCardsSuccess(state, payload) {
-	state.loyaltyCards = payload
+	state.data = payload
 	state.selectedLoyaltyCard = {}
 	state.fetchError = ''
 	state.fetchErrorCode = 0

@@ -7,11 +7,11 @@ use OCP\IRequest;
 use PHPUnit\Framework\TestCase;
 
 
-use OCA\OllaBudgetManager\Db\LoyaltyCard;
-use OCA\OllaBudgetManager\Db\LoyaltyCardMapper;
-use OCA\OllaBudgetManager\Controller\LoyaltyCardController;
+use OCA\OllaBudgetManager\Db\Loyaltycard;
+use OCA\OllaBudgetManager\Db\LoyaltycardMapper;
+use OCA\OllaBudgetManager\Controller\LoyaltycardController;
 
-class LoyaltyCardIntegrationTest extends TestCase {
+class LoyaltycardIntegrationTest extends TestCase {
 	private $controller;
 	private $mapper;
 	private $userId = 'john';
@@ -30,13 +30,13 @@ class LoyaltyCardIntegrationTest extends TestCase {
 			return $this->createMock(IRequest::class);
 		});
 
-		$this->controller = $container->query(LoyaltyCardController::class);
-		$this->mapper = $container->query(LoyaltyCardMapper::class);
+		$this->controller = $container->query(LoyaltycardController::class);
+		$this->mapper = $container->query(LoyaltycardMapper::class);
 	}
 
 	public function testUpdate() {
 		// create a new LoyaltyCard that should be updated
-		$LoyaltyCard = new LoyaltyCard();
+		$LoyaltyCard = new Loyaltycard();
 		$LoyaltyCard->setTitle('old_title');
 		$LoyaltyCard->setContent('old_content');
 		$LoyaltyCard->setUserId($this->userId);
@@ -44,7 +44,7 @@ class LoyaltyCardIntegrationTest extends TestCase {
 		$id = $this->mapper->insert($LoyaltyCard)->getId();
 
 		// fromRow does not set the fields as updated
-		$updatedLoyaltyCard = LoyaltyCard::fromRow([
+		$updatedLoyaltyCard = Loyaltycard::fromRow([
 			'id' => $id,
 			'user_id' => $this->userId
 		]);
