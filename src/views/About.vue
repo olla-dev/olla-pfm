@@ -1,17 +1,19 @@
 <template>
 	<div id="app-content-wrapper">
-		<div class="about-heading">
-			<h1>
-				{{ t('ollabudgetmanager', 'About') }}
-			</h1>
-		</div>
+		<CategoryHeader category="about" />
+		<EmptyContent icon="icon-info">
+			{{ t('ollabudgetmanager', 'Olla Budget Manager v0.0.1') }}
+		</EmptyContent>
 	</div>
 </template>
 <script>
-
+import CategoryHeader from '../components/CategoryHeader'
+import EmptyContent from '@nextcloud/vue/dist/Components/EmptyContent'
 export default {
 	name: 'About',
 	components: {
+		EmptyContent,
+		CategoryHeader
 	},
 	data() {
 		return {

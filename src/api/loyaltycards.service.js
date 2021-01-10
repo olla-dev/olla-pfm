@@ -16,6 +16,21 @@ const LoyaltyCardService = {
 			throw new GenericError(error.response.status, error.response.data.detail)
 		}
 	},
+	create: async function (payload) {
+		try {
+			
+		} catch (error) {
+			console.log(error)
+			throw new GenericError(error.response.status, error.response.data.detail)
+		}
+	},
+	delete: async function (payload) {
+		try {
+			
+		} catch (error) {
+			throw new GenericError(error.response.status, error.response.data.detail)
+		}
+	}
 }
 
 export default LoyaltyCardService

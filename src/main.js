@@ -23,14 +23,16 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import { sync } from 'vuex-router-sync'
 
 Vue.config.productionTip = false
 
 Vue.mixin({ methods: { t, n } })
+sync(store, router)
 
 export default new Vue({
+	el: '#content',
 	router,
 	store,
-	el: '#content',
 	render: h => h(App),
 })

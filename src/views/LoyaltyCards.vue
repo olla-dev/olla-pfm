@@ -1,13 +1,12 @@
 <template>
 	<div id="app-content-wrapper">
+		<CategoryHeader category="loyaltycards" />
+		<br/>
+		<br/>
 		<AppContentList :class="{loading: false}">
 			<div class="loyaltycards-heading">
-				<h2>
-					{{ t('ollabudgetmanager', 'Loyalty Cards') }}
-				</h2>
-			</div>
-			<div class="loyaltycards-heading">
-				<button class="primary">
+				<button class="primary"
+				@click="showCreateCardModal">
 					<span class="icon icon-add-white" />
 					{{ t('ollabudgetmanager', 'Add a loyalty card') }}
 				</button>
@@ -36,6 +35,10 @@
 						:size="20" />
 				</span>
 			</router-link>-->
+			<NewLoyaltyCard 
+				:modal="modal"
+				@newLoyaltyCard="newLoyaltyCard"
+				@closeModal="closeModal"/>
 		</AppContentList>
 		<AppContentDetails>
 			TODO LoyaltyCards CONTENT
@@ -46,6 +49,9 @@
 <script>
 import AppContentList from '@nextcloud/vue/dist/Components/AppContentList'
 import AppContentDetails from '@nextcloud/vue/dist/Components/AppContentDetails'
+import CategoryHeader from '../components/CategoryHeader'
+import EmptyContent from '@nextcloud/vue/dist/Components/EmptyContent'
+import NewLoyaltyCard from '../components/NewLoyaltyCard'
 // import Avatar from '@nextcloud/vue/dist/Components/Avatar'
 
 import '@nextcloud/dialogs/styles/toast.scss'
@@ -55,11 +61,15 @@ export default {
 	components: {
 		AppContentList,
 		AppContentDetails,
+		EmptyContent,
+		CategoryHeader,
+		NewLoyaltyCard
 		// Avatar,
 	},
 	data() {
 		return {
 			loading: false,
+			modal: false
 		}
 	},
 	computed: {
@@ -72,6 +82,30 @@ export default {
 	},
 
 	methods: {
+		showCreateCardModal() {
+			this.modal = true
+		},
+		/**
+		 * Create a new page and focus the page  automatically
+		 */
+		async newLoyaltyCard() {
+			try {
+				debugger
+				await this.$store.dispatch('loyaltycards/loyaltycards/createCard', {
+					store: "a",
+					notes: "a",
+					text: "a",
+					format: "aaa"
+				})
+				this.closeModal()
+			} catch (e) {
+				console.error(e)
+				showError(t('ollabudgetmanager', 'Could not create the loyalty card'))
+			}
+		},
+        closeModal() {
+			this.modal = false
+		}
 	},
 }
 </script>
