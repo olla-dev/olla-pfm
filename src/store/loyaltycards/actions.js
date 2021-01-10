@@ -16,7 +16,7 @@ export async function fetchLoyaltyCards({ commit }) {
 	}
 }
 
-export async function create ({ commit }, payload) {
+export async function create({ commit }, payload) {
 	commit('createCardRequest')
 	try {
 	  const response = await LoyaltyCardService.create(payload)
@@ -26,13 +26,13 @@ export async function create ({ commit }, payload) {
 	  return response
 	} catch (e) {
 	  if (e instanceof GenericError) {
-		commit('createCardError', { errorCode: e.errorCode, errorMessage: e.message })
+			commit('createCardError', { errorCode: e.errorCode, errorMessage: e.message })
 	  }
 	  return false
 	}
-  }
-  
-  export async function deleteCard ({ commit }, payload) {
+}
+
+export async function deleteCard({ commit }, payload) {
 	commit('deleteCardRequest')
 	try {
 	  const response = await LoyaltyCardService.delete(payload)
@@ -40,14 +40,14 @@ export async function create ({ commit }, payload) {
 	  const responseAll = await LoyaltyCardService.getCards()
 	  commit('fetchCardsSuccess', responseAll)
 	  if (this.$router.currentRoute.path !== '/') {
-		this.$router.push('/')
+			this.$router.push('/')
 	  }
 	  return response
 	} catch (e) {
 	  console.log(e)
 	  if (e instanceof GenericError) {
-		commit('deleteCardError', { errorCode: e.errorCode, errorMessage: e.message })
+			commit('deleteCardError', { errorCode: e.errorCode, errorMessage: e.message })
 	  }
 	  return false
 	}
-  }
+}

@@ -5,7 +5,7 @@ import axios from '@nextcloud/axios'
 const api_url = generateUrl('/apps/ollabudgetmanager/loyaltycards')
 
 const LoyaltyCardService = {
-	
+
 	/**
    * List producers.
    **/
@@ -19,7 +19,7 @@ const LoyaltyCardService = {
 			throw new GenericError(error.response.status, error.response.data.detail)
 		}
 	},
-	create: async function (payload) {
+	async create(payload) {
 		try {
 			console.log(payload)
 			const response = await axios.post(api_url, payload)
@@ -29,13 +29,13 @@ const LoyaltyCardService = {
 			throw new GenericError(error.response.status, error.response.data.detail)
 		}
 	},
-	delete: async function (payload) {
+	async delete(payload) {
 		try {
-			
+
 		} catch (error) {
 			throw new GenericError(error.response.status, error.response.data.detail)
 		}
-	}
+	},
 }
 
 export default LoyaltyCardService

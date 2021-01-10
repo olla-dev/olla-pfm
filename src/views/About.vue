@@ -13,7 +13,7 @@ export default {
 	name: 'About',
 	components: {
 		EmptyContent,
-		CategoryHeader
+		CategoryHeader,
 	},
 	data() {
 		return {

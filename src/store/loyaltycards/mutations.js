@@ -25,38 +25,38 @@ export function fetchLoyaltyCardsError(state, { errorCode, errorMessage }) {
 	state.fetchErrorCode = errorCode
 }
 
-export function createCardRequest (state) {
+export function createCardRequest(state) {
 	state.loading = true
 	state.fetchError = ''
 	state.fetchErrorCode = 0
-  }
-  
-  export function createCardSuccess (state) {
-	state.fetchError = ''
-	state.fetchErrorCode = 0
-	state.loading = false
-  }
-  
-  export function createCardError (state, { errorCode, errorMessage }) {
-	state.loading = false
-	state.fetchError = errorMessage
-	state.fetchErrorCode = errorCode
-  }
+}
 
-  export function deleteCardRequest (state) {
-	state.loading = true
-	state.fetchError = ''
-	state.fetchErrorCode = 0
-  }
-  
-  export function deleteCardSuccess (state) {
+export function createCardSuccess(state) {
 	state.fetchError = ''
 	state.fetchErrorCode = 0
 	state.loading = false
-  }
-  
-  export function deleteCardError (state, { errorCode, errorMessage }) {
+}
+
+export function createCardError(state, { errorCode, errorMessage }) {
 	state.loading = false
 	state.fetchError = errorMessage
 	state.fetchErrorCode = errorCode
-  }
+}
+
+export function deleteCardRequest(state) {
+	state.loading = true
+	state.fetchError = ''
+	state.fetchErrorCode = 0
+}
+
+export function deleteCardSuccess(state) {
+	state.fetchError = ''
+	state.fetchErrorCode = 0
+	state.loading = false
+}
+
+export function deleteCardError(state, { errorCode, errorMessage }) {
+	state.loading = false
+	state.fetchError = errorMessage
+	state.fetchErrorCode = errorCode
+}

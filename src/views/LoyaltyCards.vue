@@ -1,12 +1,12 @@
 <template>
 	<div id="app-content-wrapper">
 		<CategoryHeader category="loyaltycards" />
-		<br/>
-		<br/>
+		<br>
+		<br>
 		<AppContentList :class="{loading: false}">
 			<div class="loyaltycards-heading">
 				<button class="primary"
-				@click="showCreateCardModal">
+					@click="showCreateCardModal">
 					<span class="icon icon-add-white" />
 					{{ t('ollabudgetmanager', 'Add a loyalty card') }}
 				</button>
@@ -24,10 +24,10 @@
 					{{ card.name }}
 				</div>
 			</router-link>
-			<NewLoyaltyCard 
+			<NewLoyaltyCard
 				:modal="modal"
 				@newLoyaltyCard="newLoyaltyCard"
-				@closeModal="closeModal"/>
+				@closeModal="closeModal" />
 		</AppContentList>
 		<AppContentDetails>
 			TODO LoyaltyCards CONTENT
@@ -52,28 +52,28 @@ export default {
 		AppContentDetails,
 		EmptyContent,
 		CategoryHeader,
-		NewLoyaltyCard
+		NewLoyaltyCard,
 		// Avatar,
 	},
 	data() {
 		return {
 			loading: false,
-			modal: false
+			modal: false,
 		}
 	},
 	computed: {
 		cards: {
-			get () {
+			get() {
 				return this.$store.state.loyaltycards.data
-			}
+			},
 		},
 		loadingCards: {
-			get () {
+			get() {
 				return this.$store.state.cards.loading
-			}
-		}
+			},
+		},
 	},
-	mounted(){
+	mounted() {
     	this.$store.dispatch('loyaltycards/fetchLoyaltyCards')
   	},
 	methods: {
@@ -86,7 +86,7 @@ export default {
 		async newLoyaltyCard(payload) {
 			try {
 				await this.$store.dispatch('loyaltycards/create', {
-					...payload
+					...payload,
 				})
 				this.closeModal()
 			} catch (e) {
@@ -94,7 +94,7 @@ export default {
 				showError(t('ollabudgetmanager', 'Could not create the loyalty card'))
 			}
 		},
-        closeModal() {
+		closeModal() {
 			this.modal = false
 		},
 		isActive(card) {

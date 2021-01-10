@@ -3,7 +3,7 @@
 		<AppNavigation>
 			<ul>
 				<AppNavigationCaption :title="t('ollabudgetmanager', 'Select a category')" />
-			
+
 				<AppNavigationItem
 					:title="t('ollabudgetmanager', 'Dashboard')"
 					to="/"
