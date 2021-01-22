@@ -2,7 +2,7 @@ import GenericError from './errors/generic'
 import { generateUrl } from '@nextcloud/router'
 import axios from '@nextcloud/axios'
 
-const api_url = generateUrl('/apps/ollabudgetmanager/loyaltycards')
+const apiUrl = generateUrl('/apps/ollabudgetmanager/loyaltycards')
 
 const LoyaltyCardService = {
 
@@ -11,7 +11,7 @@ const LoyaltyCardService = {
    **/
 	async getCards() {
 		try {
-			const response = await axios.get(api_url)
+			const response = await axios.get(apiUrl)
 			const cards = response.data
 			// console.log(cards)
 			return cards
@@ -21,17 +21,15 @@ const LoyaltyCardService = {
 	},
 	async create(payload) {
 		try {
-			console.log(payload)
-			const response = await axios.post(api_url, payload)
+			const response = await axios.post(apiUrl, payload)
 			return response.data
 		} catch (error) {
-			console.log(error)
 			throw new GenericError(error.response.status, error.response.data.detail)
 		}
 	},
 	async delete(payload) {
 		try {
-
+			// todo
 		} catch (error) {
 			throw new GenericError(error.response.status, error.response.data.detail)
 		}

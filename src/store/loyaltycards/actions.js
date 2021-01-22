@@ -44,7 +44,7 @@ export async function deleteCard({ commit }, payload) {
 	  }
 	  return response
 	} catch (e) {
-	  console.log(e)
+	  // console.log(e)
 	  if (e instanceof GenericError) {
 			commit('deleteCardError', { errorCode: e.errorCode, errorMessage: e.message })
 	  }

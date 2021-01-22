@@ -24,14 +24,10 @@
 			</template>
 		</AppNavigation>
 		<AppContent>
-			<div v-if="loading">
-				<EmptyContent icon="icon-loading">
-					{{ t('ollabudgetmanager', 'Loading …') }}
-				</EmptyContent>
-			</div>
-			<div v-else id="app-content-wrapper">
-				<router-view />
-			</div>
+			<EmptyContent v-if="loading" icon="icon-loading">
+				{{ t('ollabudgetmanager', 'Loading …') }}
+			</EmptyContent>
+			<router-view v-else />
 		</AppContent>
 	</Content>
 </template>

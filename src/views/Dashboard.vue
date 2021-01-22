@@ -11,7 +11,7 @@ import CategoryHeader from '../components/CategoryHeader'
 import EmptyContent from '@nextcloud/vue/dist/Components/EmptyContent'
 
 export default {
-	name: 'About',
+	name: 'Dashboard',
 	components: {
 		EmptyContent,
 		CategoryHeader,

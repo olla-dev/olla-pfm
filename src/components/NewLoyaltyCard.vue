@@ -53,7 +53,6 @@
 
 <script>
 import Modal from '@nextcloud/vue/dist/Components/Modal'
-import { ActionButton, Actions, AppNavigationItem } from '@nextcloud/vue'
 import Multiselect from '@nextcloud/vue/dist/Components/Multiselect'
 
 const cardFormats = [
@@ -69,15 +68,15 @@ const cardFormats = [
 export default {
 	name: 'NewLoyaltyCard',
 	components: {
-		AppNavigationItem,
-		ActionButton,
-		Actions,
 		Modal,
 		Multiselect,
 	},
 	directives: {},
 	props: {
-		modal: false,
+		modal: {
+			type: Boolean,
+			default: false,
+		},
 	},
 	data() {
 		return {
@@ -126,7 +125,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .modal__content {
-    width: 50vw;
-    padding: 10px;
+	width: 50vw;
+	padding: 10px;
 }
 </style>
