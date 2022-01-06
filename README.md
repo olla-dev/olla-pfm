@@ -1,6 +1,14 @@
 # Olla Budget Manager
 Place this app in **nextcloud/apps/**
 
+Please do not use in production.
+
+# Progress
+* Loyalty Cards https://progress-bar.dev/50
+* Recurrent Expenses https://progress-bar.dev/0
+* Budget https://progress-bar.dev/0
+* Loan Tracking https://progress-bar.dev/0
+
 ## Building the app
 
 The app can be built by using the provided Makefile by running:
