@@ -1,13 +1,13 @@
 # Olla Budget Manager
 Place this app in **nextcloud/apps/**
 
-Please do not use in production.
+**Please do not use in production. Work In Progress**
 
 # Progress
-* Loyalty Cards https://progress-bar.dev/50
-* Recurrent Expenses https://progress-bar.dev/0
-* Budget https://progress-bar.dev/0
-* Loan Tracking https://progress-bar.dev/0
+* Loyalty Cards ![50%](https://progress-bar.dev/50)
+* Recurrent Expenses ![0](https://progress-bar.dev/0)
+* Budget ![0](https://progress-bar.dev/0)
+* Loan Tracking ![0](https://progress-bar.dev/0)
 
 ## Building the app
 
